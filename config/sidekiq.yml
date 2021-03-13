@@ -1,0 +1,6 @@
+:queues:
+  - default
+:schedule:
+  create_matchings_scheduler:
+    cron: '0 * * * * Asia/Bangkok' # Run everyday at 00:05 AM
+    class: ParsingScheduler

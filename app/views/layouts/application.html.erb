@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= "Best Hacker News" || yield(:title) %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind" %>
+    <%= stylesheet_link_tag "inter-font" %>
+  </head>
+
+  <body>
+    <header>
+      <h1 class="mx-auto from-purple-400 to-purple-700 bg-gradient-to-r subpixel-antialiased uppercase font-mono py-3 text-2xl font-bold leading-loose text-center text-white">
+        <%= link_to root_path do %>
+          BEST HACKER NEWS
+        <% end %>
+      </h1>
+    </header>
+    <%= yield %>
+  </body>
+</html>
