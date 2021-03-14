@@ -1,4 +1,6 @@
 module ArticlesHelper
+  include Pagy::Frontend
+
   def short_description_content(content)
     strip_tags_content = strip_tags(content).to_s.gsub!(/(\n|\t|\r)/, " ")
     truncate(strip_tags_content, length: 60, separator: ' ')

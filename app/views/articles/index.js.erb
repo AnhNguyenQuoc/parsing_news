@@ -1,0 +1,5 @@
+scrollToTop(500);
+
+document.getElementById('articles_table').innerHTML = ("<%= escape_javascript render(:partial => 'article_item', collection: @articles , as: :article) %>");
+document.getElementById('next_prev_link').innerHTML = ("<%= j(render 'next_prev_link') %>");
+

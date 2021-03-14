@@ -1,14 +1,20 @@
 class ArticlesController < ApplicationController
+  include Pagy::Backend
   before_action :set_article, only: [:show]
   before_action :content_exist?, only: [:show]
 
   def index
-    @articles = Article.where.not(content: nil).order(created_at: :asc)
+    @pagy, @articles = pagy_countless(Article.all.order(created_at: :desc), items: 30, link_extra: 'data-remote="true"')
   end
 
   def show
   end
 
+  def sync_data
+    ParsingDataService.parsing_hacker_news(1)
+
+    redirect_to root_path
+  end
 
   private
 

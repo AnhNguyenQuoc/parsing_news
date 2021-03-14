@@ -1,3 +1,30 @@
-<div>
-  <%= sanitize(@article.content) %>
+<% provide(:title, @article.title) %>
+<div class="text-center mt-10">
+  <div class="inline-flex flex-col space-y-4 justify-end p-4 bg-white shadow rounded-lg mx-auto">
+    <div class="inline-flex justify-start py-0.5">
+      <%= link_to 'javascript:history.back()' do %>
+        <p class="text-xl font-semibold leading-7 text-left h-6 w-6">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        </p>
+      <% end %>
+    </div>
+    <div class="container flex mx-auto w-auto items-center justify-center">
+      <ul class="flex flex-col p-4 md:w-screen sm:w-128">
+        <li class="">
+          <div class="select-none cursor-pointer rounded-md flex flex-1 items-center p-4">
+            <div class="flex-1 pl-1 mr-16 text-left">
+              <div class="font-medium text-center">
+                <%= image_tag 'unicorn.svg', class: "w-10 h-10 rounded-md inline" %>
+                <%= @article.title %>
+                <%= image_tag 'unicorn.svg', class: "w-10 h-10 rounded-md inline" %>
+              </div>
+              <div class="text-gray-600 text-sm mt-5"><%= sanitize @article.content %></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

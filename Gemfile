@@ -32,6 +32,7 @@ gem 'ruby-readability', :require => 'readability'
 
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
+gem 'pagy', '~> 3.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -48,6 +49,11 @@ group :development do
 
   # using for coc-nvim
   gem 'solargraph'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 4.1.0'
+  gem 'database_cleaner-active_record'
 end
 
 group :test do
