@@ -32,7 +32,7 @@ gem 'ruby-readability', :require => 'readability'
 
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
-gem 'pagy', '~> 3.5'
+gem 'foreman'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,6 +54,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 4.1.0'
   gem 'database_cleaner-active_record'
+  gem 'rails-controller-testing'
 end
 
 group :test do

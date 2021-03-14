@@ -1,5 +1,6 @@
-scrollToTop(500);
+document.getElementById('loading_page').classList.add('hidden');
+document.getElementById('articles_table').classList.remove('hidden');
+document.getElementById('sync-icon').classList.remove('animate-spin');
 
 document.getElementById('articles_table').innerHTML = ("<%= escape_javascript render(:partial => 'article_item', collection: @articles , as: :article) %>");
 document.getElementById('next_prev_link').innerHTML = ("<%= j(render 'next_prev_link') %>");
-

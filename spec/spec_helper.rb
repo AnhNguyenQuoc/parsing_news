@@ -14,7 +14,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'capybara/rspec'
-require 'database_cleaner'
+require 'database_cleaner/active_record'
 require 'rails_helper'
 
 RSpec.configure do |config|

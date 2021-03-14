@@ -1,10 +1,12 @@
 class ArticlesController < ApplicationController
-  include Pagy::Backend
   before_action :set_article, only: [:show]
-  before_action :content_exist?, only: [:show]
 
   def index
-    @pagy, @articles = pagy_countless(Article.all.order(created_at: :desc), items: 30, link_extra: 'data-remote="true"')
+    page = (params[:page] || 1).to_i
+    ids = ParsingDataService.parsing_hacker_news(page)
+
+    @next, @prev = page + 1, page - 1
+    @articles = Article.where(id: ids).where.not(content: nil)
   end
 
   def show
@@ -20,13 +22,5 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
-  end
-
-  def content_exist?
-    if @article.content.nil?
-      content = ParsingDataService.parsing_hacker_news_article(@article.url)
-      @article.update(content: content)
-      @article.reload!
-    end
   end
 end

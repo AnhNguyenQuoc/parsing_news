@@ -1,12 +1,12 @@
 require 'readability'
 require 'open-uri'
 require 'nokogiri'
-require 'URI'
 
 class ParsingDataService
   class << self
     def parsing_hacker_news(page = 1)
       base_url = 'https://news.ycombinator.com/best?p='
+      article_ids = []
 
       page = Nokogiri::HTML(URI.open("#{base_url}#{page}"))
       page.css('.storylink').each do |link|
@@ -14,11 +14,16 @@ class ParsingDataService
         title = link.children.text
 
         article = Article.find_by(url: url, title: title)
+
         unless article
           content = parsing_hacker_news_article(url)
-          Article.create(title: title, url: url, content: content)
+          article = Article.create(title: title, url: url, content: content)
         end
+
+        article_ids << article.id
       end
+
+      return article_ids
     end
 
     def parsing_hacker_news_article(url)
