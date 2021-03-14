@@ -13,6 +13,8 @@ class ParsingDataService
         url = link['href']
         title = link.children.text
 
+        next if url.split("/")[-1].match(/mp4/)&.size
+
         article = Article.find_by(url: url, title: title)
 
         unless article
