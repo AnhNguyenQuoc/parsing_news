@@ -40,7 +40,10 @@ window.scrollToTop = function(duration = 0){
 
 window.addEventListener("ajax:before", () => {
 	scrollToTop(100);
+
 	document.getElementById('loading_page').classList.remove('hidden');
 	document.getElementById('articles_table').classList.add('hidden');
 	document.getElementById('sync-icon').classList.add('animate-spin');
+	document.getElementById('btn-next').classList.add('hidden');
+	document.getElementById('btn-prev').classList.add('hidden');
 });
